@@ -108,8 +108,8 @@ class Config:
 def _render_config(token: str, bind: str) -> str:
     models = ", ".join(f'"{m}"' for m in DEFAULTS["models"])
     return f"""# ollama-host-toggle configuration (auto-created on first run).
-# This file holds your auth_token and is gitignored. The OMEN_AGENT_TOKEN /
-# OLLAMA_HOST_TOGGLE_TOKEN env var, if set, overrides auth_token below.
+# This file holds your auth_token and is gitignored. The OLLAMA_HOST_TOGGLE_TOKEN
+# (or legacy OMEN_AGENT_TOKEN) env var, if set, overrides auth_token below.
 
 # Path to Ollama's launcher (starts the server).
 ollama_app_path = '{DEFAULTS["ollama_app_path"]}'

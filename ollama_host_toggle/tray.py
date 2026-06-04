@@ -170,6 +170,10 @@ class TrayApp:
             pystray.MenuItem(
                 m, self._start_with(m),
                 checked=(lambda mm: lambda _i: mm in loaded)(m),
+                # Disabled only when this exact model is already loaded — picking a
+                # *different* model is allowed (a model switch), but re-selecting the
+                # one that's serving is a no-op.
+                enabled=(not serving) or (m not in loaded),
             )
             for m in self.cfg.models
         ]
