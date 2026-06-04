@@ -1,0 +1,54 @@
+# ollama-host-toggle configuration.
+#
+# You normally DON'T need this file: on first run the app auto-creates config.toml
+# with a generated auth_token and your detected Tailscale IP. This example just
+# documents every key. config.toml is gitignored — never commit a real token.
+# The OLLAMA_HOST_TOGGLE_TOKEN (or legacy OMEN_AGENT_TOKEN) env var overrides auth_token.
+
+# Path to Ollama's launcher (starts the server). Defaults to %LOCALAPPDATA%\Programs\Ollama.
+ollama_app_path = 'C:\Users\you\AppData\Local\Programs\Ollama\ollama app.exe'
+
+# Local Ollama API base.
+ollama_url = "http://localhost:11434"
+
+# Models offered in the tray "Start hosting" submenu.
+models = ["qwen2.5:14b", "qwen2.5-coder:14b"]
+
+# Model preloaded by /host/on and the default tray start (set "" for none).
+default_preload = "qwen2.5:14b"
+
+# Label reported in /state. Defaults to this machine's hostname.
+host_label = "my-gpu-box"
+
+# HTTP control API. Bind to your tailnet IP so it's reachable only over the tailnet.
+# Do NOT set 0.0.0.0 unless you really mean to expose it. First run auto-detects this.
+http_bind = "100.x.y.z"
+http_port = 11435
+
+# Shared secret for the HTTP API (clients send: Authorization: Bearer <token>).
+# Generate one:  python -c "import secrets;print(secrets.token_urlsafe(32))"
+auth_token = ""
+
+# Tray background poll interval (seconds).
+poll_interval = 8
+
+# "Open hub status" menu target (leave empty to hide the menu item).
+hub_status_url = ""
+
+# nvidia-smi location (for VRAM readout).
+nvidia_smi_path = 'C:\Windows\System32\nvidia-smi.exe'
+
+# Scheduled host on/off (optional). Each rule fires at local time "HH:MM".
+#   action = "on"  -> start serving + preload (rule's `preload` or default_preload)
+#   action = "off" -> stop serving, free the GPU
+#   days (optional): subset of mon,tue,wed,thu,fri,sat,sun — or "daily"/"weekdays"/"weekends"
+# Example: serve on weekday mornings, free the GPU every night for gaming.
+# [[schedule]]
+# at = "08:00"
+# action = "on"
+# days = "weekdays"
+# preload = "qwen2.5:14b"
+#
+# [[schedule]]
+# at = "23:30"
+# action = "off"

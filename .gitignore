@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+build/
+dist/
+*.spec.bak
+
+# Local config with secrets (auth token) — never commit
+config.toml
+config.local.*
+*.secret
+
+# Local deploy staging (may hold tokens) — never commit
+*-deploy/
+
+# Private deployment notes / original setup — keep real paths/IPs/hosts out of the repo
+HANDOFF-*.md
+BUILD-PROMPT.md
+reference/
+
+# Agent/editor workspace
+.claude/
+
+# OS
+Thumbs.db
+desktop.ini
